@@ -32,30 +32,6 @@ h5{
 h6{
     color: #D8D8D8;
 }
-.navbar{
-    font-size: 16px;
-    padding-top: 2rem !important;
-    padding-bottom: 2rem !important;
-    top: 0;
-    left: 0;
-}
-.nav-link{
-    padding: 0 20px;
-    color: black !important;
-    transition: 0.4s ease;
-}
-.nav-link:hover,i:hover{
-   color: coral !important;
-}
-.navbar i{
-    font-size: 1rem;
-    padding: 0 0.7px;
-    transition: 0.4s ease;
-    font-weight: 500;
-    cursor: pointer;
-    margin-left: 5px;
-    margin-top: 13px !important;
-}
 #home{
     background-image: url('../assets/home.jpg');
     width: 100%;
@@ -257,13 +233,6 @@ td:last-child{
     display: flex;
     justify-content: flex-end;
 }
-
-#register-url{
-    color: coral;
-}
-#login-url{
-    color: coral;
-}
 #account-form{
     width: 50%;
     margin: 5px auto;
@@ -307,7 +276,7 @@ td:last-child{
 }
 
 
-#register-form{
+/* #register-form{
     width: 50%;
     margin: 5px auto;
     text-align: center;
@@ -320,7 +289,7 @@ td:last-child{
 #register-form #register-btn{
     background-color: coral;
     color: white;
-}
+} */
 
 
 #checkout-form .checkout-sm-ele{
@@ -375,4 +344,90 @@ td:last-child{
     margin-right: 30px;
     outline: none;
     border: none;
+}
+
+.bar {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    box-shadow: 2px 2px 5px grey;
+    width: 100%;
+    padding: 10px;
+    position: fixed;
+    top: 0px;
+    background-color: white; /* Add background color to bar */
+    z-index: 1000; /* Ensure navbar is on top */
+}
+
+.logo {
+    display: flex;
+    flex-direction: row;
+    align-items: center; /* Center align items in the logo section */
+}
+
+.link {
+    display: flex;
+    flex-direction: row;
+    list-style: none;
+    margin: 0; /* Reset margin for the list */
+    padding: 0; /* Reset padding for the list */
+}
+
+.links a {
+    text-decoration: none;
+    color: black;
+    margin-left: 15px; /* Space out links */
+}
+
+#hide {
+    display: none;
+}
+
+#menu, #close {
+    display: none;
+}
+
+@media screen and (max-width: 700px) {
+    #hide {
+        display: block;
+    }
+
+    #hide i {
+        margin-left: 15px;
+    }
+
+    .phone-link {
+        background-color: aqua;
+        height: 90vh;
+        width: 100%; /* Full width for better mobile experience */
+        position: fixed;
+        top: 60px;
+        padding: 20px;
+        left: -100%; /* Start offscreen */
+        transition: 0.3s ease-in-out; /* Faster transition */
+        z-index: 999; /* Ensure it's above other content */
+    }
+
+    .link {
+        flex-direction: column;
+    }
+
+    .links {
+        margin-top: 45px;
+        margin-left: 0; /* Center links */
+        text-align: center; /* Center links */
+    }
+
+    #close {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        cursor: pointer;
+        display: block;
+    }
+
+    #menu {
+        cursor: pointer;
+        display: block;
+    }
 }

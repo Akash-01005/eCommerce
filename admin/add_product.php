@@ -1,13 +1,16 @@
 <?php
 session_start();
-require('connection.php');
+require('../server/connection.php');
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $name = $conn->real_escape_string($_POST['name']);
     $description = $conn->real_escape_string($_POST['description']);
     $price = $conn->real_escape_string($_POST['price']);
+    $image= $conn->real_escape_string($_POST['image']);
+    $color= $conn->real_escape_string($_POST['color']);
+    $category=$conn->real_escape_string($_POST['category']);
 
-    $sql = "INSERT INTO products (name, description, price) VALUES ('$name', '$description', '$price')";
+    $sql = "INSERT INTO products (product_name,product_description,product_price,product_color,product_category,product_image) VALUES ('$name', '$description', '$price','$color','$category','$image')";
 
     if ($conn->query($sql) === TRUE) {
         header("Location: dashboard.php?message=Product+added+successfully");
@@ -28,11 +31,23 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <input type="text" name="name" class="form-control" required>
         </div>
         <div class="mb-3">
-            <label for="description" class="form-label">Description:</label>
+            <label for="name" class="form-label">Product Image:</label>
+            <input type="text" name="image" class="form-control" required>
+        </div>
+        <div class="mb-3">
+            <label for="name" class="form-label">Product category:</label>
+            <input type="text" name="category" class="form-control" required>
+        </div>
+        <div class="mb-3">
+            <label for="description" class="form-label">Product Description:</label>
             <textarea name="description" class="form-control" required></textarea>
         </div>
         <div class="mb-3">
-            <label for="price" class="form-label">Price:</label>
+            <label for="price" class="form-label">Product Color:</label>
+            <input type="text" name="color" class="form-control" required>
+        </div>
+        <div class="mb-3">
+            <label for="name" class="form-label">Product Price:</label>
             <input type="text" name="price" class="form-control" required>
         </div>
         <button type="submit" class="btn btn-primary">Add Product</button>

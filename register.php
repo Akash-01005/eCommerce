@@ -59,39 +59,44 @@ else if(isset($_SESSION['logged_in'])){
 }
 
 ?>
-
-<?php include('./layouts/header.php');?>
-<section class="my-1 py-1">
-        <div class="container text-center mt-3 pt-5">
-                <h1>Register</h1>
-            <hr class="mx-auto">
+<?php include('./layouts/header.php'); ?>
+<section class="my-5 py-5">
+    <div class="container d-flex flex-column align-items-center">
+        <div class="text-center mb-4">
+            <h1 class="display-4">Register</h1>
         </div>
-        <div class="mx-auto container">
-            <form action="register.php" id="register-form" method="POST">
-                <p style="color:red;"><?php if(isset($_GET['error'])){ echo $_GET['error'];}?></p>
-                <div class="form-group">
-                    <label for="">Name</label>
-                    <input type="text" class="form-control" id="name" name="name" placeholder="Name" required>
-                   </div>
-               <div class="form-group">
-                <label for="">Email</label>
-                <input type="email" class="form-control" id="login-email" name="email" placeholder="Email" required>
-               </div>
-               <div class="form-group">
-                <label for="">Password</label>
-                <input type="password" class="form-control" id="login-password" name="pass" placeholder="Password" required>
-               </div>
-               <div class="form-group">
-                <label for="">Confirm Password</label>
-                <input type="password" class="form-control" id="login-email" name="cpass" placeholder="Confirm Password" required>
-               </div>
-               <div class="form-group">
-                <input type="submit" class="btn" id="register-btn" value="Register" name="register">
-               </div>
-               <div class="form-group">
-                <a href="login.php" id="register-url">Do you have an account? login</a>
-               </div>
+        <div class="card shadow-lg p-4" style="max-width: 600px; width: 100%;">
+            <form action="register.php" id="register-form" method="POST" class="needs-validation" novalidate>
+                <p class="text-danger text-center"><?php if(isset($_GET['error'])) { echo $_GET['error']; } ?></p>
+                <div class="mb-3">
+                    <label for="name" class="form-label">Name</label>
+                    <input type="text" class="form-control form-control-lg" id="name" name="name" placeholder="Name" required>
+                    <div class="invalid-feedback">Please enter your name.</div>
+                </div>
+                <div class="mb-3">
+                    <label for="login-email" class="form-label">Email</label>
+                    <input type="email" class="form-control form-control-lg" id="login-email" name="email" placeholder="Email" required>
+                    <div class="invalid-feedback">Please enter a valid email address.</div>
+                </div>
+                <div class="mb-3">
+                    <label for="login-password" class="form-label">Password</label>
+                    <input type="password" class="form-control form-control-lg" id="login-password" name="pass" placeholder="Password" required>
+                    <div class="invalid-feedback">Please enter your password.</div>
+                </div>
+                <div class="mb-4">
+                    <label for="confirm-password" class="form-label">Confirm Password</label>
+                    <input type="password" class="form-control form-control-lg" id="confirm-password" name="cpass" placeholder="Confirm Password" required>
+                    <div class="invalid-feedback">Please confirm your password.</div>
+                </div>
+                <div class="d-grid mb-3">
+                    <input type="submit" class="btn btn-primary btn-lg" id="register-btn" value="Register" name="register">
+                </div>
+                <div class="text-center">
+                    <a href="login.php" id="register-url" class="text-decoration-none">Do you have an account? Login</a>
+                </div>
             </form>
         </div>
-      </section>
-<?php include('./layouts/footer.php');?>
+    </div>
+</section>
+<?php include('./layouts/footer.php'); ?>
+

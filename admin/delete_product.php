@@ -1,10 +1,10 @@
 <?php
 session_start();
-require('connection.php');
+require('../server/connection.php');
 
-if (isset($_GET['id'])) {
-    $id = intval($_GET['id']);
-    $sql = "DELETE FROM products WHERE id = $id";
+if (isset($_GET['product_id'])) {
+    $id = intval($_GET['product_id']);
+    $sql = "DELETE FROM products WHERE product_id = $id";
 
     if ($conn->query($sql) === TRUE) {
         header("Location: dashboard.php?message=Product+deleted+successfully");

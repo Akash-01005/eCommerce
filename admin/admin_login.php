@@ -2,6 +2,7 @@
 session_start();
 require('../server/connection.php');
 
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $email = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
     $password = $_POST['password'];
@@ -16,7 +17,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $_SESSION['admin_id'] = $admin_id;
             $_SESSION['admin_email'] = $admin_email;
             $_SESSION['admin_logged_in'] = true;
-            header("Location: dashboard.php");
+            header("Location: dashboard.php?message=login+successfull");
             exit();
         } else {
             $error = "Invalid email or password";

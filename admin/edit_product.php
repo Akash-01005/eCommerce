@@ -1,26 +1,29 @@
 <?php
 session_start();
-require('connection.php');
+require('../server/connection.php');
+$pid=$_GET['product_id'];
+// if (isset($_GET['product_id'])) {
+//     $id = intval($_GET['product_id']);
+//     $result = $conn->query("SELECT * FROM products WHERE product_id = $id");
 
-if (isset($_GET['id'])) {
-    $id = intval($_GET['id']);
-    $result = $conn->query("SELECT * FROM products WHERE id = $id");
-
-    if ($result->num_rows > 0) {
-        $product = $result->fetch_assoc();
-    } else {
-        header("Location: dashboard.php?message=Product+not+found");
-        exit();
-    }
-}
+//     if ($result->num_rows > 0) {
+//         $product []= $result->fetch_assoc();
+//     } else {
+//         header("Location: dashboard.php?message=Product+not+found");
+//         exit();
+//     }
+// }
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $id = intval($_POST['id']);
+    $id = intval($_POST['product_id']);
     $name = $conn->real_escape_string($_POST['name']);
     $description = $conn->real_escape_string($_POST['description']);
     $price = $conn->real_escape_string($_POST['price']);
+    $image = $conn->real_escape_string($_POST['image']);
+    $color = $conn->real_escape_string($_POST['color']);
+    $category = $conn->real_escape_string($_POST['category']);
 
-    $sql = "UPDATE products SET name='$name', description='$description', price='$price' WHERE id=$id";
+    $sql = "UPDATE products SET product_name='$name', product_description='$description', product_price='$price',product_color='$color',product_category='$category',product_image='$image' WHERE product_id=$id";
 
     if ($conn->query($sql) === TRUE) {
         header("Location: dashboard.php?message=Product+updated+successfully");
@@ -36,26 +39,49 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <div class="container mt-5">
     <h2>Edit Product</h2>
     <form action="edit_product.php" method="POST" class="needs-validation" novalidate>
-        <input type="hidden" name="id" value="<?php echo htmlspecialchars($product['id']); ?>">
+        <input type="hidden" name="product_id" value="<?php echo $pid;?>">
         <div class="mb-3">
             <label for="name" class="form-label">Product Name:</label>
-            <input type="text" name="name" class="form-control" id="name" value="<?php echo htmlspecialchars($product['name']); ?>" required>
+            <input type="text" name="name" class="form-control" id="name"  required>
             <div class="invalid-feedback">
                 Please provide a product name.
             </div>
         </div>
         <div class="mb-3">
-            <label for="description" class="form-label">Description:</label>
-            <textarea name="description" class="form-control" id="description" rows="5" required><?php echo htmlspecialchars($product['description']); ?></textarea>
+            <label for="description" class="form-label">Product Description:</label>
+            <textarea name="description" class="form-control" id="description" rows="5" required></textarea>
             <div class="invalid-feedback">
                 Please provide a description.
             </div>
         </div>
         <div class="mb-3">
-            <label for="price" class="form-label">Price:</label>
-            <input type="text" name="price" class="form-control" id="price" value="<?php echo htmlspecialchars($product['price']); ?>" required>
+
+        <div class="mb-3">
+            <label for="price" class="form-label">Product Price:</label>
+            <input type="text" name="price" class="form-control" id="price"  required>
             <div class="invalid-feedback">
                 Please provide a price.
+            </div>
+        </div>
+        <div class="mb-3">
+            <label for="col" class="form-label">Product Color:</label>
+            <input type="text" name="color" class="form-control" id="col"  required>
+            <div class="invalid-feedback">
+                Please provide a color.
+            </div>
+        </div>
+        <div class="mb-3">
+            <label for="im" class="form-label">Product image:</label>
+            <input type="text" name="image" class="form-control" id="im"  required>
+            <div class="invalid-feedback">
+                Please provide a image.
+            </div>
+        </div>
+        <div class="mb-3">
+            <label for="cat" class="form-label">Product category:</label>
+            <input type="text" name="category" class="form-control" id="cat"  required>
+            <div class="invalid-feedback">
+                Please provide a category.
             </div>
         </div>
         <button type="submit" class="btn btn-primary">Update Product</button>

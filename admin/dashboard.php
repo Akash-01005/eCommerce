@@ -1,6 +1,13 @@
 <?php
 session_start();
-require('connection.php');
+include('../server/connection.php');
+if (isset($_SESSION['admin_logged_in']) && $_SESSION['admin_logged_in'] === true) {
+//   header('location: dashboard.php');
+} else {
+  header('location: admin_login.php');
+  exit();
+}
+
 ?>
 
 <?php include('../layouts/admin_header.php'); ?>
@@ -26,21 +33,19 @@ require('connection.php');
                         <th>Name</th>
                         <th>Description</th>
                         <th>Price</th>
-                        <th>Created At</th>
                         <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody>';
         while ($row = $result->fetch_assoc()) {
             echo '<tr>
-                    <td>' . $row['id'] . '</td>
-                    <td>' . $row['name'] . '</td>
-                    <td>' . $row['description'] . '</td>
-                    <td>' . $row['price'] . '</td>
-                    <td>' . $row['created_at'] . '</td>
+                    <td>' . $row['product_id'] . '</td>
+                    <td>' . $row['product_name'] . '</td>
+                    <td>' . $row['product_description'] . '</td>
+                    <td>' . $row['product_price'] . '</td>
                     <td>
-                        <a href="edit_product.php?id=' . $row['id'] . '" class="btn btn-warning btn-sm">Edit</a>
-                        <a href="delete_product.php?id=' . $row['id'] . '" class="btn btn-danger btn-sm" onclick="return confirm(\'Are you sure?\')">Delete</a>
+                        <a href="edit_product.php?product_id=' . $row['product_id'] . '" class="btn btn-warning btn-sm">Edit</a>
+                        <a href="delete_product.php?product_id=' . $row['product_id'] . '" class="btn btn-danger btn-sm" onclick="return confirm(\'Are you sure?\')">Delete</a>
                     </td>
                   </tr>';
         }
