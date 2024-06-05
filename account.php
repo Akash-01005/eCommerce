@@ -90,7 +90,7 @@ $orders= $st->get_result();
 <section class="orders my-5">
     <div class="container">
         <div class="text-center mt-2">
-            <h2 class="font-weight-bold">Your Orders</h2>
+            <h2 class="font-weight-bold"  id="orders">Your Orders</h2>
             <br>
         </div>
         <div class="table-responsive">

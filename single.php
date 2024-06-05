@@ -24,7 +24,7 @@ else{
                     <h2>Rs.<?php echo $r['product_price']; ?></h2>
                     <form action="cart.php" method="POST">
                         <input type="number" name="product_quantity" value="1" class="form-control mb-3">
-                        <input type="hidden" name="product_id">
+                        <input type="hidden" name="product_id" value="<?php echo $r['product_id'];?>">
                         <input type="hidden" name="product_image" value="<?php echo $r['product_image']; ?>"/>
                         <input type="hidden" name="product_name" value="<?php echo $r['product_name']; ?>"/>
                         <input type="hidden" name="product_price" value="<?php echo $r['product_price']; ?>"/>
@@ -37,29 +37,6 @@ else{
         </div>
     </div>
 </section>
-
-<section class="related-products my-5 pb-5">
-    <div class="container text-center">
-        <h3>Related Products</h3>
-        <hr>
-    </div>
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-3 col-md-4 col-sm-6">
-                <div class="product text-center">
-                    <img src="./assets/shoes.png" alt="" class="img-fluid mb-3">
-                    <div class="star">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                    </div>
-                    <h5 class="p-name">Sports Shoes</h5>
-                    <h4 class="p-price">Rs.1800</h4>
-                    <button class="btn btn-primary buy-now">Buy Now</button>
-                </div>
-            </div>
             <!-- Repeat similar structure for other related products -->
         </div>
     </div>

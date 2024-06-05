@@ -37,13 +37,10 @@ else{
             $pi=$pd['product_image'];
             $pp=$pd['product_price'];
             $pq=$pd['product_quantity'];
-    
             $st1=$conn->prepare("INSERT INTO order_items (order_id,product_id,product_name,product_image,product_price,product_quantity,user_id,order_date) VALUES(?,?,?,?,?,?,?,?)");
             $st1->bind_param('iissiiis',$o_id,$pid,$pn,$pi,$pp,$pq,$user_id,$od);
             $st1->execute();
-        }
-        
-    
+        }     
         //unset($_SESSION['cart']);
     
             header("location: ../payment.php?order_status='order placed successfully'");

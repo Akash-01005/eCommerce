@@ -32,7 +32,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $_SESSION['logged_in'] = true;
 
     // Redirect to account page with a success message
-    header("location: account.php?message=logged+in+successfully");
+    header('location: account.php?message=logged+in+successfully & user_id='.$_SESSION['user_id']);
     exit(); // Stop further script execution
   } else {
     // Failed login: Redirect with an error message

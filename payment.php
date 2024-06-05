@@ -15,7 +15,6 @@ if(isset($_POST['order_pay'])){
            <?php if(isset($_SESSION['total']) && $_SESSION['total']!=0){?>
            <p>Total Payment: Rs.<?php  echo $_SESSION['total'];?></p>
            <input type="submit" value="Pay Now" class="btn btn-danger">
-
           <?php } else if(isset($_POST['total'])&& $_POST['order_status'] =='Not Paid') {?>
             <p>Total payment:Rs.<?php echo $_POST['total_order_price'];?></p>
             <input type="submit" value="Pay Now" class="btn btn-danger">

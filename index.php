@@ -2,62 +2,27 @@
 <section id="home" class="bg-light py-5">
     <div class="container">
         <div class="text-center">
-            <h5>New Arrivals</h5>
-            <h1><span>Best Prices</span> This Season</h1>
+            <h3>New Arrivals</h3>
+            <h1><span class="text-warning">Best Prices</span> This Season</h1>
             <p>Eshop offers the best products for the most affordable prices!</p>
-            <button class="btn btn-primary">Shop Now</button>
+            <a href="shop.php"><button class="btn btn-primary">Shop Now</button></a>
         </div>
     </div>
 </section>
 
 <section id="brand" class="container mt-5">
     <div class="row">
-        <div class="col-lg-3 col-md-6 col-sm-12 mb-3">
+        <div class="col-lg-6 col-md-6 col-sm-12 mb-3">
             <img src="./assets/brand1.jpg" alt="" class="img-fluid">
         </div>
-        <div class="col-lg-3 col-md-6 col-sm-12 mb-3">
+        <div class="col-lg-6 col-md-6 col-sm-12 mb-3">
             <img src="./assets/brand2.jpg" alt="" class="img-fluid">
         </div>
-        <div class="col-lg-3 col-md-6 col-sm-12 mb-3">
+        <div class="col-lg-6 col-md-6 col-sm-12 mb-3">
             <img src="./assets/brand3.jpg" alt="" class="img-fluid">
         </div>
-        <div class="col-lg-3 col-md-6 col-sm-12 mb-3">
-            <img src="./assets/brand4.jpg" alt="" class="img-fluid">
-        </div>
-    </div>
-</section>
-
-<section id="new" class="container py-5">
-    <div class="text-center mb-5">
-        <h2>OFFER ZONE</h2>
-    </div>
-    <div class="row">
-        <div class="col-lg-4 col-md-12 mb-4">
-            <div class="card">
-                <img src="./assets/shoes.png" alt="" class="card-img-top">
-                <div class="card-body">
-                    <h5 class="card-title">Extremely Awesome Shoes</h5>
-                    <button class="btn btn-primary">Shop Now</button>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-4 col-md-12 mb-4">
-            <div class="card">
-                <img src="./assets/jacket.png" alt="" class="card-img-top">
-                <div class="card-body">
-                    <h5 class="card-title">Awesome Jacket</h5>
-                    <button class="btn btn-primary">Shop Now</button>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-4 col-md-12 mb-4">
-            <div class="card">
-                <img src="./assets/watch.png" alt="" class="card-img-top">
-                <div class="card-body">
-                    <h5 class="card-title">50% OFF Watches</h5>
-                    <button class="btn btn-primary">Shop Now</button>
-                </div>
-            </div>
+        <div class="col-lg-6 col-md-6 col-sm-12 mb-2">
+            <img src="./assets/puma.jpg" alt="" height="298px" width="550px">
         </div>
     </div>
 </section>
@@ -97,8 +62,8 @@
 <section id="banner" class="container py-5">
     <div class="text-center">
         <h2 class="mb-4">MID SEASON'S SALE</h2>
-        <h1 class="mb-4">Autumn Collection up to 30% off</h1>
-        <button class="btn btn-primary btn-lg">Shop Now</button>
+        <h1 class="mb-4 text-danger">Autumn Collection up to 30% off</h1>
+        <button class="btn btn-primary btn-lg rounded">Shop Now</button>
     </div>
 </section>
 

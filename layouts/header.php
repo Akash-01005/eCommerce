@@ -8,12 +8,20 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <title>Range</title>
+    <style>
+        .logo a{
+            text-decoration: none;
+            color: black;
+        }
+        .logo a b{
+            font-size: 18px;
+        }
+    </style>
 </head>
 <body>
-<div class="bar">
+<div class="bar p-3">
     <div class="logo">
-        <img src="" alt="">
-        <p>Range</p>
+        <a href="../index.php"><b>Range</b></a>
     </div>
     <div class="phone-link" id="ph">
         <ul class="link">
@@ -33,11 +41,11 @@ let phoneLink = document.getElementById('ph');
 let menuButton = document.getElementById('menu');
 
 closeButton.addEventListener('click', () => {
-    phoneLink.style.left = '-100%'; // Move offscreen
+    phoneLink.style.left = '-100%';
 });
 
 menuButton.addEventListener('click', () => {
-    phoneLink.style.left = '0'; // Move onscreen
+    phoneLink.style.left = '-40%'; 
 });
 
 </script>

@@ -1,19 +1,22 @@
 <?php
 session_start();
 
-if(isset($_POST['cart'])){
+// Assuming the user_id is set in the session when the user logs in
+// For example: $_SESSION['user_id'] = $loggedInUserId;
+
+if (isset($_POST['cart'])) {
     // If the cart is already set
-    if(isset($_SESSION['cart'])){
+    if (isset($_SESSION['cart'])) {
         $pro_arr_ids = array_column($_SESSION['cart'], 'product_id');
         
         // Check if the product is already in the cart
-        if(in_array($_POST['product_id'], $pro_arr_ids)){
+        if (in_array($_POST['product_id'], $pro_arr_ids)) {
             $pid = $_POST['product_id'];
-            foreach ($_SESSION['cart'] as $key => $product) {
-                if ($product['product_id'] == $pid) {
-                    $_SESSION['cart'][$key]['product_quantity'] += $_POST['product_quantity'];
-                }
-            }
+            // foreach ($_SESSION['cart'] as $key => $product) {
+            //     if ($product['product_id'] == $pid) {
+            //         $_SESSION['cart'][$key]['product_quantity'] += $_POST['product_quantity'];
+            //     }
+            // }
         } else {
             // Add a new product to the cart
             $pid = $_POST['product_id'];
@@ -38,7 +41,7 @@ if(isset($_POST['cart'])){
         );
         $_SESSION['cart'][$pid] = $par;
     }
-} elseif(isset($_POST['remove_product'])){
+} elseif (isset($_POST['remove_product'])) {
     $pid = $_POST['product_id'];
     foreach ($_SESSION['cart'] as $key => $product) {
         if ($product['product_id'] == $pid) {
@@ -47,7 +50,7 @@ if(isset($_POST['cart'])){
     }
     // Re-index the array to prevent holes
     $_SESSION['cart'] = array_values($_SESSION['cart']);
-} elseif(isset($_POST['edit_quantity'])){
+} elseif (isset($_POST['edit_quantity'])) {
     $pr = $_POST['product_quantity'];
     $pid = $_POST['product_id'];
     foreach ($_SESSION['cart'] as $key => $product) {
@@ -57,10 +60,10 @@ if(isset($_POST['cart'])){
     }
 }
 
-function calcart(){
+function calcart() {
     $total = 0;
     if (isset($_SESSION['cart'])) {
-        foreach($_SESSION['cart'] as $product){
+        foreach ($_SESSION['cart'] as $product) {
             $pr = $product['product_price'];
             $q = $product['product_quantity'];
             $total += $pr * $q;
@@ -71,6 +74,7 @@ function calcart(){
 }
 
 $total = calcart();
+$user_id = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : 'Guest';
 ?>
 <?php include('./layouts/header.php'); ?>
 <section class="cart container my-5 py-5">
@@ -135,6 +139,7 @@ $total = calcart();
         </div>
         <div class="checkout-container text-center mt-3">
              <form action="checkout.php" method="POST">
+                <input type="hidden" value="<?php echo $user_id;?>">
                 <input type="submit" class="btn btn-primary" value="Checkout" name="checkout">
              </form>
         </div>
